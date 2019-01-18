@@ -1,7 +1,7 @@
 # tgssadr_skymodel
 Creating a BBS Skymodel from the TGSS Alternative Data Release
 
-http://tgssadr.strw.leidenuniv.nl/doku.php
+http://tgssadr.strw.leidenuniv.nl/doku.php#lofar\_sky\_model\_creator
 
 Usage: python tgss2bbs2.py [options]
 
