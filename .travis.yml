@@ -9,7 +9,8 @@ python:
 # command to install dependencies
 before_install:
    - pip install pytest
-   - if [[ TRAVIS_PYTHON_VERSION = 3.3 ]]; then apt-get install python-logilab-common;fi
+   - echo $TRAVIS_PYTHON_VERSION
+   - if [[ $TRAVIS_PYTHON_VERSION = 3.3 ]]; then apt-get install python-logilab-common;fi
 script:
   - export PYTHONPATH=$PWD:$PYTHONPATH
   - pytest
