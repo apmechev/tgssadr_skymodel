@@ -13,3 +13,8 @@ def test_dec_over_90():
     for _ in range(1,10):
         rand_dec = random.uniform(0,90)
         assert(radec_to_string([0,90-rand_dec]) == radec_to_string([0, 90 + rand_dec]))
+
+def test_output():
+    result = "'00h00m00.0000s +89d00\'00.000"
+    assert(result == radec_to_string([0,89]))
+
