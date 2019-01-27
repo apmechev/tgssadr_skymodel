@@ -15,6 +15,10 @@ def test_dec_over_90():
         assert(radec_to_string([0,90-rand_dec]) == radec_to_string([0, 90 + rand_dec]))
 
 def test_output():
-    result = "'00h00m00.0000s +89d00'00.000"
+    result = '00h00m00.0000s +89d00\'00.000"'
     assert(result == radec_to_string([0,89]))
 
+def test_decimals():
+    assert(radec_to_string([0,0],decimals=[0,0]) == '00h00m00s +00d00\'00"')
+    assert(radec_to_string([0,0],decimals=[1,1]) == '00h00m00.0s +00d00\'00.0"')
+    assert(radec_to_string([0,0],decimals=[5,5]) == '00h00m00.00000s +00d00\'00.00000"')
