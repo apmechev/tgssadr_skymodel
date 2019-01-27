@@ -9,9 +9,8 @@ python:
 # command to install dependencies
 before_install:
    - pip install pytest
-   - pip install numpy
    - echo $TRAVIS_PYTHON_VERSION
-   - if [[ $TRAVIS_PYTHON_VERSION = 3.3 ]]; then sudo apt-get update; sudo apt-get install python-logilab-common;fi
+   - if [[ $TRAVIS_PYTHON_VERSION = 3.3 ]]; then sudo apt-get update; sudo apt-get install python-logilab-common;sudo apt-get install python-numpy; fi
 script:
   - export PYTHONPATH=$PWD:$PYTHONPATH
   - pytest
