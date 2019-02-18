@@ -9,7 +9,8 @@ Last updated: Sep 18 2016
 Updated by Alexandar Mechev.
 Deconvolution script by Joshua Albert
 """
-import pyvo as vo    #Fetch data from vo server
+from astropy.coordinates import get_icrs_coordinates
+import pyvo as vo
 import optparse
 import radec_to_string #astropyless conversion of ra-dec co-ordinates
 import math
@@ -35,7 +36,7 @@ def main(srcID,radius,DoDec=True,output="tgss.skymodel"):
    # Get the sources in the cut-out as a VO table 
    url = 'http://vo.astron.nl/tgssadr/q/cone/scs.xml'
    try:
-      t = vo.conesearch(url, pos = vo.object2pos(objName), radius = radInDeg )
+      t = vo.conesearch(url, pos = get_icrs_coordinates(objName), radius = radInDeg )
    except IndexError:
       f=open(outFileName,'w')
       f.write("Index Error when polling VirtualObservatory. Bad object name??")
@@ -47,7 +48,7 @@ def main(srcID,radius,DoDec=True,output="tgss.skymodel"):
       # Write all selected components as a single patch
       f.write("FORMAT = Name, Type, Patch, Ra, Dec, I, Q, U, V, MajorAxis, MinorAxis, Orientation, ReferenceFrequency='147500000.0', SpectralIndex='[]'\n\n")
       # Get the coordinates of the source
-      c=radec_to_string.radec_to_string([float(vo.object2pos(objName)[0]),float(vo.object2pos(objName)[1])],separators = [ ':', ':', '$', '.', ".", '' ])
+      c=radec_to_string.radec_to_string([get_icrs_coordinates(objName).ra.value,get_icrs_coordinates(objName).dec.value],separators = [ ':', ':', '$', '.', ".", '' ])
       newRA = c.split("$")[0]
       newDec = c.split("$")[1]
       # Create the header
@@ -107,7 +108,7 @@ def main(srcID,radius,DoDec=True,output="tgss.skymodel"):
       # Writes sources without a patch
       f.write("FORMAT = Name, Type, Ra, Dec, I, Q, U, V, MajorAxis, MinorAxis, Orientation, ReferenceFrequency='147610000.0', SpectralIndex='[]'\n\n")
       for item in t:
-         # VO table has RA and DEC in degrees. Convert it to hmsdms format
+        # VO table has RA and DEC in degrees. Convert it to hmsdms format
         coords=radec_to_string.radec_to_string([float(item['RA']),float(item['DEC'])],separators = [ ':', ':', '$', '.', ".", '' ])
         newRA = coords.split("$")[0]
         newDec = coords.split("$")[1]
