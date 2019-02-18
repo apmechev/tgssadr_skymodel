@@ -1,4 +1,5 @@
 from radec_to_string import radec_to_string
+from radec_to_string import degdeg_to_hmsdms
 import random
 
 def test_zero_is_360():
@@ -22,3 +23,9 @@ def test_decimals():
     assert(radec_to_string([0,0],decimals=[0,0]) == '00h00m00s +00d00\'00"')
     assert(radec_to_string([0,0],decimals=[1,1]) == '00h00m00.0s +00d00\'00.0"')
     assert(radec_to_string([0,0],decimals=[5,5]) == '00h00m00.00000s +00d00\'00.00000"')
+
+def test_precisions():
+    assert(degdeg_to_hmsdms([0,0],[0]) == [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    assert(degdeg_to_hmsdms([0,0],0) == [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    assert(degdeg_to_hmsdms([0,0],[0,1]) == [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
