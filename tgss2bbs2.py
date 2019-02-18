@@ -108,12 +108,12 @@ def main(srcID,radius,DoDec=True,output="tgss.skymodel"):
       f.write("FORMAT = Name, Type, Ra, Dec, I, Q, U, V, MajorAxis, MinorAxis, Orientation, ReferenceFrequency='147610000.0', SpectralIndex='[]'\n\n")
       for item in t:
          # VO table has RA and DEC in degrees. Convert it to hmsdms format
-         coords=radec_to_string.radec_to_string([float(item['RA']),float(item['DEC'])],separators = [ ':', ':', '$', '.', ".", '' ])
-         newRA = coords.split("$")[0]
-         newDec = coords.split("$")[1]
+        coords=radec_to_string.radec_to_string([float(item['RA']),float(item['DEC'])],separators = [ ':', ':', '$', '.', ".", '' ])
+        newRA = coords.split("$")[0]
+        newDec = coords.split("$")[1]
         # Write an entry for this source into the output file
          #Case Gaussian
-	 f.write("{name}, GAUSSIAN, {ra}, {dec}, {i}, 0, 0, 0, {ma}, {mi}, {pa}, , [-0.8]\n".format(name=item['ID'], ra=newRA, dec=newDec, i=item['Sint']/1e3, ma=item['MAJAX'], mi=item['MINAX'], pa=item['PA']))
+        f.write("{name}, GAUSSIAN, {ra}, {dec}, {i}, 0, 0, 0, {ma}, {mi}, {pa}, , [-0.8]\n".format(name=item['ID'], ra=newRA, dec=newDec, i=item['Sint']/1e3, ma=item['MAJAX'], mi=item['MINAX'], pa=item['PA']))
    f.close()
 
 if __name__ == '__main__':
