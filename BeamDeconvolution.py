@@ -7,7 +7,7 @@ def quadratic2elliptic(A,B,C,D=0,E=0,F=-np.log(2)):
     (a0 sin^2 phi + c0 cos^2 phi) k = C
     returns bmaj,bmin,bpa[,xc,y if D,E != 0]"""
     if (B**2 - 4*A*C) == 0:
-#        print "It is parabolic,not elliptic or hyperbolic"
+#        print("It is parabolic,not elliptic or hyperbolic")
         return None,None,None
     if A!=C:#not a circle so should be able to solve second equation
         #A-C = A0 cos^2 phi + c0 sin^2 phi - a0 sin^2 phi - c0 cos^2 phi
@@ -26,7 +26,7 @@ def quadratic2elliptic(A,B,C,D=0,E=0,F=-np.log(2)):
     s2 = s*s
     A1 = A*c2 + B*c*s + C*s2
     B1 = 2.*(C-A)*s*c+B*(c2-s2)#should be zero since there's no cross term in the unroated
-    #print "Rotated cross term: {0} =? 0".format(B1)
+
     C1 = A*s2 - B*c*s + C*c2
     D1 = D*c + E*s
     E1 = -D*s + E*c
@@ -152,12 +152,12 @@ def findCommonBeam(beams):
     cb = beams_array[idxMaxArea,:].flatten()
     i = 0
     while i < np.size(Areas):
-        print np.size(Areas),i
+        print(np.size(Areas),i)
         if i != idxMaxArea:
             #deconlove
             A2,B2,C2 = ecliptic2quadratic(beams_array[i,0],beams_array[i,1],beams_array[i,2])
             Ak,Bk,Ck = deconvolve(A1,B1,C1,A2,B2,C2)
-            print Ak,Bk,Ck
+            print(Ak,Bk,Ck)
             try:
                 b = quadratic2elliptic(Ak,Bk,Ck)
                 if b is None:
@@ -280,27 +280,27 @@ if __name__ == '__main__':
     bmaj = 1.
     bmin = 0.5
     bpa = 90.
-    print "Psf beam, elliptic:",bmaj,bmin,bpa
+    print("Psf beam, elliptic:",bmaj,bmin,bpa)
     Apsf,Bpsf,Cpsf = elliptic2quadratic(bmaj,bmin,bpa)
-    print "test quadratic2elliptical"
-    print "psf elliptical check:",quadratic2elliptic(Apsf,Bpsf,Cpsf)
-    print "Quadratic:",Apsf,Bpsf,Cpsf
+    print("test quadratic2elliptical")
+    print("psf elliptical check:",quadratic2elliptic(Apsf,Bpsf,Cpsf))
+    print("Quadratic:",Apsf,Bpsf,Cpsf)
     #blob to deconvolve
     bmaj1 = 2.
     bmin1 = 1.5
     bpa1 = 0.
-    print "Source ,elliptic:",bmaj1,bmin1,bpa1
+    print( "Source ,elliptic:",bmaj1,bmin1,bpa1)
     A1,B1,C1 = elliptic2quadratic(bmaj1,bmin1,bpa1)
-    print "Quadratic:",A1,B1,C1
+    print("Quadratic:",A1,B1,C1)
     A2,B2,C2,factor = convolve(A1,B1,C1,Apsf,Bpsf,Cpsf)
     bmaj,bmin,bpa = quadratic2elliptic(A2,B2,C2)
-    print "Analytic Convolve, elliptic:",bmaj,bmin,bpa
-    print "Quadratic:",A2,B2,C2
+    print("Analytic Convolve, elliptic:",bmaj,bmin,bpa)
+    print("Quadratic:",A2,B2,C2)
     Ak,Bk,Ck = deconvolve(A2,B2,C2,Apsf,Bpsf,Cpsf)
     bmaj,bmin,bpa = quadratic2elliptic(Ak,Bk,Ck)
-    print "Deconvolve, elliptic:",bmaj,bmin,bpa
-    print "Quadratic:",Ak,Bk,Ck
-    print "Difference, elliptic:",bmaj-bmaj1,bmin-bmin1,bpa-bpa1
-    print "Difference, Quadratic:",Ak-A1,Bk-B1,Ck-C1
+    print( "Deconvolve, elliptic:",bmaj,bmin,bpa)
+    print( "Quadratic:",Ak,Bk,Ck)
+    print( "Difference, elliptic:",bmaj-bmaj1,bmin-bmin1,bpa-bpa1)
+    print( "Difference, Quadratic:",Ak-A1,Bk-B1,Ck-C1)
     
 
