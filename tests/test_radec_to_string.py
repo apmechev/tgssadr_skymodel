@@ -25,7 +25,7 @@ def test_decimals():
     assert(radec_to_string([0,0],decimals=[5,5]) == '00h00m00.00000s +00d00\'00.00000"')
 
 def test_precisions():
-    assert(degdeg_to_hmsdms([0,0],[0]) == [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-    assert(degdeg_to_hmsdms([0,0],0) == [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-    assert(degdeg_to_hmsdms([0,0],[0,1]) == [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    assert(degdeg_to_hmsdms([0,0],[0]) == [0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+    assert(degdeg_to_hmsdms([0,0],0) == [0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+    assert(degdeg_to_hmsdms([0,0],[0,1]) == [0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
 
