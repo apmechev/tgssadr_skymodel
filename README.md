@@ -1,5 +1,5 @@
 # tgssadr_skymodel
-[![Coverage Status](https://coveralls.io/repos/github/apmechev/tgssadr_skymodel/badge.svg?branch=master)](https://coveralls.io/github/apmechev/tgssadr_skymodel?branch=master)
+[![codecov](https://codecov.io/gh/apmechev/tgssadr_skymodel/branch/master/graph/badge.svg)](https://codecov.io/gh/apmechev/tgssadr_skymodel)
 [![Build Status](https://travis-ci.org/apmechev/tgssadr_skymodel.svg?branch=master)](https://travis-ci.org/apmechev/tgssadr_skymodel)
 Creating a BBS Skymodel from the TGSS Alternative Data Release
 
