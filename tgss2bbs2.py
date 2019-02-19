@@ -82,7 +82,7 @@ def main(srcID,radius,DoDec=True,output="tgss.skymodel"):
                     maja="{0:0.1f}".format(maja)
                     mina="{0:0.1f}".format(mina)
                     pax="{0:0.1f}".format(pax)
-            if float(pax)<10 and pax!="":
+            if  pax!="" and float(pax)<10:
                 pa1="{0:.2f}".format(float(pax))
             else:
                 pa1=pax
