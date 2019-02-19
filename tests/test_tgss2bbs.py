@@ -10,5 +10,5 @@ def test_makes_a_skymodel_from_3Csource():
             lines.append(line)
         assert lines[0] == "FORMAT = Name, Type, Patch, Ra, Dec, I, Q, U, V, MajorAxis, MinorAxis, Orientation, ReferenceFrequency='147500000.0', SpectralIndex='[]'"
         assert lines[2] ==" , , Patch, 01:37:41.2996, +33.09.35.079"
-        for line in lines[3:]:
+        for line in lines[3:-2]:
             assert "GAUSSIAN" in line or "POINT" in line
