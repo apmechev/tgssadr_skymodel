@@ -1,3 +1,4 @@
+import numpy as np
 from BeamDeconvolution import elliptic2quadratic
 from BeamDeconvolution import convolve
 from BeamDeconvolution import deconvolve
