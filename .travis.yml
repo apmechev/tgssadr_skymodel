@@ -8,6 +8,9 @@ python:
   - "3.6"
 # command to install dependencies
 before_install:
+   - "export DISPLAY=:99.0" #Emulating display for pyplot to work
+   - "sh -e /etc/init.d/xvfb start"
+   - sleep 3 # give xvfb some time to start
    - pip install pytest
    - pip install pytest-cov
    - pip install codecov
