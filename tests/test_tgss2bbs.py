@@ -16,7 +16,7 @@ def test_makes_a_skymodel_from_3Csource():
 
 
 def _test_helper_function(name):
-    astro_coords = get_icrs_coordinates
+    astro_coords = get_icrs_coordinates(name)
     coords = "{0}, {1}".format(astro_coords.ra.value, astro_coords.dec.value)
     with NamedTemporaryFile() as name_model:
         with NamedTemporaryFile() as coords_model: 
