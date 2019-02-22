@@ -228,7 +228,7 @@ def psfTGSS1(dec):
     else:
         return 25.,25./np.cos(np.pi*(dec-19.0836824)/180.),0.
 
-def testError():
+def testError(show_plot=True):
     import pylab as plt
     dec = np.linspace(-90,20,40)
     b = np.linspace(1e-10,25,40)
@@ -273,7 +273,9 @@ def testError():
     ax2.hist(errors[:,1],bins=100)
     ax3.hist(errors[:,2],bins=100)
 
-    plt.show()
+    if show_plot:
+        plt.show()
+
 if __name__ == '__main__':
     testError()
     #psf

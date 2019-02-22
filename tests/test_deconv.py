@@ -52,4 +52,4 @@ def test_deltaFunctionDeconvolve():
 #     assert bmaj_d==0 and bmin_d==0 and bpa_d==0,"Supposed to be the delta"
 
 def test_test_error():
-    testError()
+    testError(show_plot=False)
