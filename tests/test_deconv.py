@@ -51,5 +51,5 @@ def test_deltaFunctionDeconvolve():
      bmaj_d, bmin_d, bpa_d = quadratic2elliptic(Ak,Bk,Ck)
 #     assert bmaj_d==0 and bmin_d==0 and bpa_d==0,"Supposed to be the delta"
 
-def test_test_error()
+def test_test_error():
     testError()
