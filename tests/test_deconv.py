@@ -1,4 +1,7 @@
 import numpy as np
+import matplotlib
+matplotlib.use('agg')
+
 from BeamDeconvolution import elliptic2quadratic
 from BeamDeconvolution import convolve
 from BeamDeconvolution import deconvolve
