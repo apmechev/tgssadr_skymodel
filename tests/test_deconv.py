@@ -3,6 +3,7 @@ from BeamDeconvolution import elliptic2quadratic
 from BeamDeconvolution import convolve
 from BeamDeconvolution import deconvolve
 from BeamDeconvolution import quadratic2elliptic
+from BeamDeconvolution import testError
 
 
 
@@ -49,3 +50,6 @@ def test_deltaFunctionDeconvolve():
      Ak,Bk,Ck = deconvolve(A1,B1,C1,A1,B1,C1)
      bmaj_d, bmin_d, bpa_d = quadratic2elliptic(Ak,Bk,Ck)
 #     assert bmaj_d==0 and bmin_d==0 and bpa_d==0,"Supposed to be the delta"
+
+def test_test_error()
+    testError()

@@ -1,5 +1,6 @@
 from tempfile import NamedTemporaryFile
 from tgss2bbs2 import  main 
+from astropy.coordinates import get_icrs_coordinates
 
 
 def test_makes_a_skymodel_from_3Csource():
@@ -13,11 +14,12 @@ def test_makes_a_skymodel_from_3Csource():
         for line in lines[3:-2]:
             assert "GAUSSIAN" in line or "POINT" in line
 
-def test_name_and_coord_equals():
-    coords = "24.42208167, 33.15974417"
-    name = "3C48"
+
+def _test_helper_function(name):
+    astro_coords = get_icrs_coordinates
+    coords = "{0}, {1}".format(astro_coords.ra.value, astro_coords.dec.value)
     with NamedTemporaryFile() as name_model:
-        with NamedTemporaryFile() as coords_model:
+        with NamedTemporaryFile() as coords_model: 
             main(srcID=name, radius=1, DoDec=True, output=name_model.name)
             main(srcID=coords, radius=1, DoDec=True, output=coords_model.name)
             with open(name_model.name,'r') as _f:
@@ -31,4 +33,11 @@ def test_name_and_coord_equals():
             for line_n, line_c in zip(name_data, coord_data):
                 assert line_n == line_c
 
+def test_name_and_coord_equals():
+    name = "3C48"
+    _test_helper_function(name)
+    name = "Abell 1914"
+    _test_helper_function(name)
+    name = "Cas A"
+    _test_helper_function(name)
 
